@@ -17,7 +17,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: laravel_react_jobsite
           MYSQL_USER: root
-          MYSQL_PASSWORD: ""
+          MYSQL_PASSWORD: root
         ports:
           - 3306:3306
         options: >-
@@ -71,7 +71,7 @@ jobs:
           DB_PORT: 3306
           DB_DATABASE: laravel_react_jobsite
           DB_USERNAME: root
-          DB_PASSWORD: ""
+          DB_PASSWORD: root
         run: php artisan migrate --verbose
 
       - name: Run Laravel tests
