@@ -14,7 +14,7 @@ function Apply() {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
-    
+
     // Handle value change for submission
     const handleChange = (event) => {
         event.preventDefault();
@@ -124,14 +124,28 @@ function Apply() {
                     </div>
 
                     {/* Submit */}
-                    <div className="text-end">
-                        <button
-                            type="submit"
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition duration-150"
-                            onClick={handleSubmit}
-                        >
-                            Submit
-                        </button>
+                    <div className="flex justify-between">
+
+                        <div className="text-end">
+                            <a
+                                href={route('job.show', id)}
+                                type="submit"
+                                className="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition duration-150"
+                                
+                            >
+                                Back to the Job
+                            </a>
+                        </div>
+
+                        <div className="text-end">
+                            <button
+                                type="submit"
+                                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition duration-150"
+                                onClick={handleSubmit}
+                            >
+                                Submit
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

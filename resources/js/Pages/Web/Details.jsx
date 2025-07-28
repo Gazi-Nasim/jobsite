@@ -27,9 +27,7 @@ function Details() {
 
                 <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg md:justify-between md:flex m-auto col-4">
                     <div className="p-6 text-gray-900 ">
-                        <div className="flex justify-end">
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded align-end" onClick={() => { window.location.href = `/apply/${job.id}` }}>Apply Now</button>
-                        </div>
+
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
@@ -62,8 +60,13 @@ function Details() {
                             </div>
 
                         </div>
-                        <div>
-
+                        <div className="flex justify-end">
+                            <div className="flex justify-end mr-2">
+                                <button className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded align-end" onClick={() => { window.location.href = '/' }}>See all Jobs</button>
+                            </div>
+                            <div className="flex justify-end">
+                                <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded align-end" onClick={() => { window.location.href = `/apply/${job.id}` }}>Apply Now</button>
+                            </div>
                         </div>
 
                         {/* <div className="flex col-sm-12">
