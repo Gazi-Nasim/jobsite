@@ -2,6 +2,7 @@
 
 <p align="center">
 # 🧰 Mini Job Board — Full Stack Project (React + Laravel)
+<br>
 A simple full-stack job board application where companies can post jobs (admin-only) and users can view and apply.
 </p>
 
@@ -59,6 +60,28 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 📦 API Endpoints
+
+| Method | Endpoint             | Description                | Auth      |
+|--------|----------------------|----------------------------|-----------|
+| GET    | /api/jobs            | List all jobs              | Public    |
+| GET    | /api/jobs/{id}       | Get job by ID              | Public    |
+| POST   | /api/jobs            | Create a new job           | Admin only|
+| POST   | /api/applications    | Submit a job application   | Public    |
+
+---
+
+## 🧪 Running Locally
+
+### 🔹 Backend (Laravel)
+
+```bash
+git clone https://github.com/Gazi-Nasim/jobsite.git
+cd job-board-backend
+cp .env.example .env
+composer install
+php artisan key:generate
+php artisan migrate --seed
+php artisan serve
