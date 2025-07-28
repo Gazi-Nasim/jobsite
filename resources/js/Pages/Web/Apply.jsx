@@ -13,7 +13,7 @@ function Apply() {
 
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
-
+    const [isApplied, setIsApplied] = useState(false)
 
     // Handle value change for submission
     const handleChange = (event) => {
@@ -56,7 +56,8 @@ function Apply() {
         try {
             const response = await axios.post(`/api/application`, applicantData);
             if (response.data.success) {
-                setSuccessMessage(response.data.success);
+                setSuccessMessage('Application submitted successfully');
+                setIsApplied(true)
                 setApplicantData({
                     name: '',
                     email: '',
@@ -65,7 +66,7 @@ function Apply() {
                 });
                 setTimeout(() => {
                     setSuccessMessage('');
-                }, 1000);
+                }, 5000);
             }
         } catch (error) {
             console.error(error);
@@ -76,9 +77,8 @@ function Apply() {
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
             <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-8">
-                <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Apply Now</h2>
-                <h4 className="text-2x2 font-bold text-green-800 mb-6 text-center">{successMessage}</h4>
-                <h4 className="text-2x2 font-bold text-red-800 mb-6 text-center">{errorMessage}</h4>
+                <h2 className="text-2x1 font-bold text-green-800 mb-6 text-center">{successMessage ? 'Application submitted successfully' : 'Apply Here'}</h2>
+                <h3 className="text-2x2 font-bold text-red-800 mb-6 text-center">{errorMessage}</h3>
 
                 <form className="space-y-6">
                     {/* Name */}
@@ -131,20 +131,21 @@ function Apply() {
                                 href={route('job.show', id)}
                                 type="submit"
                                 className="bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition duration-150"
-                                
+
                             >
                                 Back to the Job
                             </a>
                         </div>
 
                         <div className="text-end">
-                            <button
-                                type="submit"
-                                className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition duration-150"
-                                onClick={handleSubmit}
-                            >
-                                Submit
-                            </button>
+                            {!isApplied &&
+                                <button
+                                    type="submit"
+                                    className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg shadow-md transition duration-150"
+                                    onClick={handleSubmit}
+                                >
+                                    Submit
+                                </button>}
                         </div>
                     </div>
                 </form>

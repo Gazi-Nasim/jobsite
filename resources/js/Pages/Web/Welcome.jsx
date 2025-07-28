@@ -7,7 +7,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
     const [jobs, setJobs] = useState([]);
     const getAllJobs = () => {
         axios.get('/api/jobs').then((response) => {
-            console.log(response.data);
             setJobs(response.data);
             document.getElementById('screenshot')?.setAttribute('src', response.data);
         });
@@ -17,15 +16,6 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
         getAllJobs();
     }, []);
 
-    const handleJobClick = (id) => {
-        console.log(id);
-
-        // axios.get(`/jobs/${id}`).then((response) => {
-        //     console.log(response.data);
-        //     setJobs(response.data);
-        //     document.getElementById('screenshot')?.setAttribute('src', response.data);
-        // });
-    }
     return (
         <>
             <Head title="Welcome" />

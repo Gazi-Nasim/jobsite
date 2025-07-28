@@ -101,7 +101,11 @@ function Create() {
         // Clear error message
         setErrorMessage('');
         try {
-            const response = await axios.post('/api/job', { ...educationData, ...jobsData });
+            const response = await axios.post('/api/job', { ...educationData, ...jobsData }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
             if (response.data.success) {
                 setEducationData({
                     secondary: '',
@@ -125,7 +129,7 @@ function Create() {
             setSuccessMessage(response.data.success);
             setTimeout(() => {
                 setSuccessMessage('');
-            }, 1000);
+            }, 5000);
         } catch (error) {
             console.error(error);
         }
@@ -139,7 +143,6 @@ function Create() {
             ...educationData
         }, {
             onSuccess: (response) => {
-                console.log(response);
                 setEducationData({
                     secondary: '',
                     secondarySession: '',
