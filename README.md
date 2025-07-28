@@ -24,17 +24,21 @@ A simple full-stack job board application where companies can post jobs (admin-o
 ---
 ## 🛠️ Tech Stack
 
+
+### I have installed React in my Laravel app so i need one hoisting 
+Hosted on [BalancedServer](http://jobs.adlyticsolutions.com/)
+
 ### Frontend
 - React.js
 - Axios
 - Tailwind CSS
-- Hosted on [Vercel](https://vercel.com)
+- 
 
 ### Backend
 - Laravel 11 (API only)
 - Sanctum Authentication + Role Middleware
 - MySQL (or SQLite for local testing)
-- Hosted on [Railway](https://railway.app)
+- 
 
 ---
 

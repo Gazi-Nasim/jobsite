@@ -74,8 +74,14 @@ export default function Login({ status, canResetPassword }) {
                                 setData('remember', e.target.checked)
                             }
                         />
+
                         <span className="ms-2 text-sm text-gray-600">
                             Remember me
+                        </span>
+                        <br /><br />
+
+                        <span>
+                            username = admin@example.com password = 12345678
                         </span>
                     </label>
                 </div>
