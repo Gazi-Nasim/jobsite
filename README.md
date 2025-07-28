@@ -67,8 +67,8 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 | Method | Endpoint             | Description                | Auth      |
 |--------|----------------------|----------------------------|-----------|
 | GET    | /api/jobs            | List all jobs              | Public    |
-| GET    | /api/jobs/{id}       | Get job by ID              | Public    |
-| POST   | /api/jobs            | Create a new job           | Admin only|
+| GET    | /api/job/{id}       | Get job by ID              | Public    |
+| POST   | /api/job            | Create a new job           | Admin only|
 | POST   | /api/applications    | Submit a job application   | Public    |
 
 ---
