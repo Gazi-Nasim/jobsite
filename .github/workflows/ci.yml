@@ -21,10 +21,10 @@ jobs:
         ports:
           - 3306:3306
         options: >-
-          --health-cmd="mysqladmin ping"
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -u laravel -plaravel"
           --health-interval=10s
           --health-timeout=5s
-          --health-retries=3
+          --health-retries=10
 
     steps:
       - name: Checkout code
@@ -42,20 +42,27 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Copy .env file
+        run: cp .env.example .env
+
       - name: Install PHP dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
       - name: Install Node dependencies
-        run:  npm install
+        run: npm install
 
       - name: Build React assets
         run: npm run build
 
-      - name: Copy .env file
-        run: cp .env.example .env
-
       - name: Generate application key
         run: php artisan key:generate
+
+      - name: Wait for MySQL to be ready
+        run: |
+          echo "Waiting for MySQL to be ready..."
+          until mysqladmin ping -h 127.0.0.1 -u laravel -plaravel --silent; do
+            sleep 1
+          done
 
       - name: Run migrations
         env:
@@ -65,7 +72,7 @@ jobs:
           DB_DATABASE: laravel
           DB_USERNAME: laravel
           DB_PASSWORD: laravel
-        run: php artisan migrate
+        run: php artisan migrate --verbose
 
       - name: Run Laravel tests
-        run: php artisan test
+        run: php artisan test --verbose
