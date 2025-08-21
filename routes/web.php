@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Backend\DetailsController;
 use App\Http\Controllers\Backend\PostjobsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -26,7 +25,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified',]], funct
     })->name('admin.dashboard');
     Route::resource('/job', PostjobsController::class)->names('admin.job')->middleware('admin');
 });
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

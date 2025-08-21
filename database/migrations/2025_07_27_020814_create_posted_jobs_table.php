@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('company');
             $table->string('location');
             $table->string('salary');
-            $table->tinyInteger('min_experience')->nullable();
-            $table->tinyInteger('max_experience')->nullable();
-            $table->tinyInteger('min_age')->nullable();
-            $table->tinyInteger('max_age')->nullable();
+            $table->string('min_experience')->nullable();
+            $table->string('max_experience')->nullable();
+            $table->string('min_age')->nullable();
+            $table->string('max_age')->nullable();
             $table->string('posted')->nullable();
             $table->string('deadline')->nullable();
             $table->string('imp_notes')->nullable();

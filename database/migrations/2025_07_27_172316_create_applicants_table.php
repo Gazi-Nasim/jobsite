@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('job_id');
             $table->foreign('job_id')->references('id')->on('posted_jobs')->onDelete('cascade');
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('cv_text');
             $table->timestamps();
         });

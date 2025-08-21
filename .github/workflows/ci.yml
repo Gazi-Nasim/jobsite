@@ -46,7 +46,7 @@ jobs:
         run: cp .env.example .env
 
       - name: Install PHP dependencies
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --prefer-dist --no-progress --no-interaction
 
       - name: Install Node dependencies
         run: npm install
@@ -55,7 +55,7 @@ jobs:
         run: npm run build
 
       - name: Generate application key
-        run: php artisan key:generate
+        run: php artisan key:generate --no-interaction
 
       - name: Wait for MySQL to be ready
         run: |
@@ -71,8 +71,15 @@ jobs:
           DB_PORT: 3306
           DB_DATABASE: laravel_react_jobsite
           DB_USERNAME: root
-          DB_PASSWORD: root
-        run: php artisan migrate --verbose
+          DB_PASSWORD:
+        run: php artisan migrate --verbose --no-interaction
 
       - name: Run Laravel tests
-        run: php artisan test --verbose
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: 127.0.0.1
+          DB_PORT: 3306
+          DB_DATABASE: laravel_react_jobsite
+          DB_USERNAME: root
+          DB_PASSWORD:
+        run: php artisan test --verbose --no-interaction

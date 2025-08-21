@@ -12,3 +12,6 @@ Route::get('/jobs', [App\Http\Controllers\Web\JobController::class, 'index']);
 Route::get('/job/{id}', [App\Http\Controllers\Web\JobController::class, 'show']);
 Route::post('/application', [App\Http\Controllers\Web\JobController::class, 'store']);
 Route::post('/job', [App\Http\Controllers\Backend\PostjobsController::class, 'store']);
+
+Route::post('/register', [App\Http\Controllers\Auth\AuthenticationController::class, 'store']);
+Route::post('/login', [App\Http\Controllers\Auth\AuthenticationController::class, 'loginRequest']);
